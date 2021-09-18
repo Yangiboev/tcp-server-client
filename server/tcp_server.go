@@ -6,6 +6,8 @@ import (
 	"log"
 	"net"
 	"sync"
+
+	cli "github.com/Yangiboev/tcp-server-client/client"
 )
 
 type client struct {

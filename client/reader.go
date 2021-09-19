@@ -38,7 +38,7 @@ func (r *CommandReader) Read() (interface{}, error) {
 			message[:len(message)-1],
 		}, nil
 
-	case "broad ":
+	case "broadcast ":
 		message, err := r.reader.ReadString('\n')
 		if err != nil {
 			return nil, err

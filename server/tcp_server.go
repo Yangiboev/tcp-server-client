@@ -80,7 +80,7 @@ func (s *TcpChatServer) Send(name string, command interface{}) error {
 }
 
 func (s *TcpChatServer) accept(conn net.Conn) *client {
-	log.Printf("Accepting connection from %v, total clients: %d", conn.RemoteAddr().String(), len(s.clients)+1)
+	// log.Printf("Accepting connection from %v, total clients: %d", conn.RemoteAddr().String(), len(s.clients)+1)
 	s.mutex.Lock()
 	defer s.mutex.Unlock()
 
@@ -105,7 +105,7 @@ func (s *TcpChatServer) remove(client *client) {
 		}
 	}
 
-	log.Printf("Closing connection from %v,, total clients: %d", client.conn.RemoteAddr().String(), len(s.clients))
+	// log.Printf("Closing connection from %v,, total clients: %d", client.conn.RemoteAddr().String(), len(s.clients))
 	client.conn.Close()
 }
 

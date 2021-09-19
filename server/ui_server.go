@@ -21,16 +21,17 @@ func StartUIServer(s ServerI) {
 		strs := strings.Split(msg, " ")
 		if len(strs) > 0 {
 			if strs[0] == "tag" {
+				go s.Send(strs[1], c.MessageCommand{
+					Message: msg,
+					Name:    "Server",
+				})
+			} else {
 				go s.Broadcast(c.MessageCommand{
 					Message: msg,
 					Name:    "Server",
 				})
 			}
 		}
-		go s.Broadcast(c.MessageCommand{
-			Message: msg,
-			Name:    "Server",
-		})
 	})
 	if err := ui.Run(); err != nil {
 		panic(err)

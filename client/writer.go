@@ -25,7 +25,7 @@ func (w *CommandWriter) Write(command interface{}) error {
 	var err error
 	switch v := command.(type) {
 	case MessageCommand:
-		err = w.writeString(fmt.Sprintf("tag  %v %v\n", v.Name, v.Message))
+		err = w.writeString(fmt.Sprintf("tag %v %v\n", v.Name, v.Message))
 	case SendCommand:
 		err = w.writeString(fmt.Sprintf("broad %v\n", v.Message))
 	case NameCommand:

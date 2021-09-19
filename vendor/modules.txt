@@ -1,0 +1,25 @@
+# github.com/gdamore/encoding v0.0.0-20151215212835-b23993cbb635
+## explicit
+github.com/gdamore/encoding
+# github.com/gdamore/tcell v1.1.0
+## explicit
+github.com/gdamore/tcell
+github.com/gdamore/tcell/terminfo
+# github.com/lucasb-eyer/go-colorful v0.0.0-20180709185858-c7842319cf3a
+## explicit
+github.com/lucasb-eyer/go-colorful
+# github.com/marcusolsson/tui-go v0.4.0
+## explicit
+github.com/marcusolsson/tui-go
+github.com/marcusolsson/tui-go/wordwrap
+# github.com/mattn/go-runewidth v0.0.3
+## explicit
+github.com/mattn/go-runewidth
+# github.com/mitchellh/go-wordwrap v1.0.0
+## explicit
+github.com/mitchellh/go-wordwrap
+# golang.org/x/text v0.3.0
+## explicit
+golang.org/x/text/encoding
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/transform

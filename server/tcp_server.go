@@ -67,7 +67,6 @@ func (s *TcpChatServer) Broadcast(command interface{}) error {
 			return err
 		}
 	}
-
 	return nil
 }
 
@@ -77,7 +76,6 @@ func (s *TcpChatServer) Send(name string, command interface{}) error {
 			return client.writer.Write(command)
 		}
 	}
-
 	return ErrFoo
 }
 

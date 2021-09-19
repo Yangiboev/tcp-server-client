@@ -26,12 +26,13 @@ Client 1 sends a directed broadcast message to client 2)
 
 * Solution:
   1. Setup tcp server 
-    * Start with basic start, stop, broadcast and listen to clients
-  2. Setup tcp client that connects to server with partcular name 
-  3. Create UI for client
+  2. Start with basic start, stop, broadcast and listen to clients
+  3. Setup tcp client that connects to server with partcular name 
+  4. Create UI for client
 # How to run
 
 ## References
   1. https://gist.github.com/drewolson/3950226
   2. https://github.com/marcusolsson/tui-go/blob/master/example/login/main.go
   3. https://github.com/marcusolsson/tui-go/blob/master/example/chat/main.go
+  4. https://github.com/firstrow/tcp_server/blob/master/tcp_server.go

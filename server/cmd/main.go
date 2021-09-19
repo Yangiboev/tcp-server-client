@@ -5,9 +5,10 @@ import (
 )
 
 func main() {
+
 	s := server.NewServer()
 	s.Listen(":5000")
-
 	// start the server
-	s.Start()
+	go s.Start()
+	server.StartUIServer(s)
 }

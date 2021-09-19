@@ -23,7 +23,6 @@ func (r *CommandReader) Read() (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	switch commandName {
 	case "tag ":
 		user, err := r.reader.ReadString(' ')

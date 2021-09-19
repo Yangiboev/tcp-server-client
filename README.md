@@ -30,6 +30,20 @@ Client 1 sends a directed broadcast message to client 2)
   3. Setup tcp client that connects to server with partcular name 
   4. Create UI for client
 # How to run
+  1. Run the server that listens 5000 port 
+  ```sh
+go run server/cmd/main.go
+```
+  2. Run the client 
+  ```sh
+    go run ui/cmd/main.go
+    ```
+  3. Enter your name
+  4. Send message 
+  5. From server client can be tagged using
+    ```sh
+    tag clientname message
+    ```
 
 ## References
   1. https://gist.github.com/drewolson/3950226

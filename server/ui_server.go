@@ -22,7 +22,7 @@ func StartUIServer(s ServerI) {
 		if len(strs) > 0 {
 			if strs[0] == "tag" {
 				go s.Send(strs[1], c.MessageCommand{
-					Message: msg,
+					Message: strings.Join(strs[2:], ""),
 					Name:    "Server",
 				})
 			} else {

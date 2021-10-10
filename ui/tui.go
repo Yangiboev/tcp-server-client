@@ -18,7 +18,12 @@ func StartUi(c client.ClientI) {
 		panic(err)
 	}
 
-	quit := func() { ui.Quit() }
+	quitChan := make(chan struct{})
+
+	quit := func() {
+		ui.Quit()
+		quitChan <- struct{}{}
+	}
 
 	ui.SetKeybinding("Esc", quit)
 	ui.SetKeybinding("Ctrl+c", quit)
@@ -32,26 +37,30 @@ func StartUi(c client.ClientI) {
 		c.SendMessage(msg)
 	})
 
-	go func() {
-		for {
-			select {
-			case err := <-c.Error():
-				if err == io.EOF {
-					ui.Update(func() {
-						chatView.AddMessage("Connection closed connection from server.")
-					})
-				} else {
-					panic(err)
-				}
-			case msg := <-c.Incoming():
-				ui.Update(func() {
-					chatView.AddMessage(fmt.Sprintf("%s-%s: %s", time.Now().Format("2006.01.02 15:04:05:"), msg.Name, msg.Message))
-				})
-			}
-		}
-	}()
+	go chattingProcess(c, ui, chatView, quitChan)
 
 	if err := ui.Run(); err != nil {
 		panic(err)
+	}
+}
+
+func chattingProcess(c client.ClientI, ui tui.UI, chatView *ChatView, quitChan chan struct{}) {
+	for {
+		select {
+		case err := <-c.Error():
+			if err == io.EOF {
+				ui.Update(func() {
+					chatView.AddMessage("Connection closed connection from server.")
+				})
+			} else {
+				panic(err)
+			}
+		case msg := <-c.Incoming():
+			ui.Update(func() {
+				chatView.AddMessage(fmt.Sprintf("%s-%s: %s", time.Now().Format("2006.01.02 15:04:05:"), msg.Name, msg.Message))
+			})
+		case <-quitChan:
+			return
+		}
 	}
 }
